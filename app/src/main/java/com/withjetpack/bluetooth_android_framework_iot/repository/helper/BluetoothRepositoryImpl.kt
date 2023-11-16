@@ -17,7 +17,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
-import java.io.IOException
 import java.io.OutputStream
 import java.util.*
 import javax.inject.Inject
@@ -33,7 +32,6 @@ class BluetoothRepositoryImpl @Inject constructor(
     private var deviceDiscoveryReceiver: BroadcastReceiver? = null
     private val _availabledeviceList = MutableStateFlow<List<BluetoothDevice>>(emptyList())
     private val _paireddeviceList = MutableStateFlow<List<BluetoothDevice>>(emptyList())
-
 
     @SuppressLint("MissingPermission")
     override fun startDiscovery(): MutableStateFlow<List<BluetoothDevice>> {
@@ -76,7 +74,6 @@ class BluetoothRepositoryImpl @Inject constructor(
             if (!bluetoothAdapter.isEnabled) {
                 // You might want to prompt the user to enable Bluetooth
             }
-
             // Get the list of paired devices
             val pairedDevices: Set<BluetoothDevice> = bluetoothAdapter.bondedDevices
             _paireddeviceList.value= pairedDevices.toList()
@@ -117,20 +114,25 @@ class BluetoothRepositoryImpl @Inject constructor(
     override suspend fun sendDataToDevice(device: BluetoothDevice) {
         val socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"))
         socket.connect()
-
-        try {
-            val outputStream: OutputStream = socket.outputStream
+        socket.use {
+            it.connect()
+            val outputStream: OutputStream = it.outputStream
             val dataToSend = "Hello, World!".toByteArray()
             outputStream.write(dataToSend)
-        } catch (e: IOException) {
-            // Handle exceptions
-        } finally {
-            try {
-                socket.close()
-            } catch (e: IOException) {
-                // Handle close exceptions
-            }
         }
+//        try {
+//            val outputStream: OutputStream = socket.outputStream
+//            val dataToSend = "Hello, World!".toByteArray()
+//            outputStream.write(dataToSend)
+//        } catch (e: IOException) {
+//            // Handle exceptions
+//        } finally {
+//            try {
+//                socket.close()
+//            } catch (e: IOException) {
+//                // Handle close exceptions
+//            }
+//        }
     }
 
     @SuppressLint("MissingPermission")

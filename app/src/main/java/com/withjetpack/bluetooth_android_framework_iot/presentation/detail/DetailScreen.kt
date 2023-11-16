@@ -1,4 +1,4 @@
-package com.withjetpack.bluetooth_android_framework_iot.presentation
+package com.withjetpack.bluetooth_android_framework_iot.presentation.detail
 
 import android.Manifest
 import android.content.pm.PackageManager
