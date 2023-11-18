@@ -13,7 +13,7 @@ import com.withjetpack.bluetooth_android_framework_iot.ui.theme.BluetoothAndroid
 @Composable
 fun ToolBar() {
 
-    var toolbarTitle by remember { mutableStateOf("Bluetooth Connection") }
+    var toolbarTitle by remember { mutableStateOf("Bluetooth Framework") }
 
     BluetoothAndroidFrameworkIOTTheme {
 

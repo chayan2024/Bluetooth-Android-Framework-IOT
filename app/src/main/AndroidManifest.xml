@@ -18,12 +18,14 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:icon="@drawable/ic_bluetooth"
+        android:roundIcon="@drawable/ic_bluetooth"
         android:supportsRtl="true"
         android:name=".BluetoothAndroidFrameworkIOT"
         android:theme="@style/Theme.BluetoothAndroidFrameworkIOT"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,7 +33,6 @@
             android:theme="@style/Theme.BluetoothAndroidFrameworkIOT">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 

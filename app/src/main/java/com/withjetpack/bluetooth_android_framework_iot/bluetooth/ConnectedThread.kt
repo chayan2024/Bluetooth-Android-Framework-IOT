@@ -3,7 +3,7 @@ package com.withjetpack.bluetooth_android_framework_iot.bluetooth
 import android.bluetooth.BluetoothSocket
 import android.os.Handler
 import android.os.SystemClock
-import com.withjetpack.bluetoothclassicconnection.util.MESSAGE_READ
+import com.withjetpack.bluetooth_android_framework_iot.util.MESSAGE_READ
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

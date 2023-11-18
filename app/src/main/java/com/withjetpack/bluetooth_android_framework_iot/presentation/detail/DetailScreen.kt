@@ -23,7 +23,7 @@ import androidx.navigation.NavHostController
 import com.withjetpack.bluetooth_android_framework_iot.common.BluetoothAvailableDeviceCard
 import com.withjetpack.bluetooth_android_framework_iot.common.BluetoothPairedDeviceCard
 import com.withjetpack.bluetooth_android_framework_iot.common.ToolBar
-import com.withjetpack.bluetooth_android_framework_iot.presentation.detail.BluetoothViewModel
+import com.withjetpack.bluetooth_android_framework_iot.presentation.detail.viewmodel.BluetoothViewModel
 
 @Composable
 fun DetailScreen(navController: NavHostController) {
@@ -33,6 +33,7 @@ fun DetailScreen(navController: NavHostController) {
     LaunchedEffect(true) {
         viewModel.startBluetoothDiscovery()
     }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,13 +68,6 @@ fun DetailScreen(navController: NavHostController) {
                         LocalContext.current, Manifest.permission.BLUETOOTH_CONNECT
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
                 }
 
                 BluetoothAvailableDeviceCard(viewModel, deviceName, false) {}
@@ -102,13 +96,6 @@ fun DetailScreen(navController: NavHostController) {
                         LocalContext.current, Manifest.permission.BLUETOOTH_CONNECT
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
                 }
 
                 BluetoothPairedDeviceCard(viewModel, deviceName, false) {}
@@ -117,4 +104,6 @@ fun DetailScreen(navController: NavHostController) {
         }
 
     }
+
+
 }

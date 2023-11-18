@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -21,12 +22,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavHostController
+import com.withjetpack.bluetooth_android_framework_iot.common.CustomSwitch
 import com.withjetpack.bluetooth_android_framework_iot.common.ToolBar
-import com.withjetpack.bluetoothclassicconnection.util.REQUEST_ENABLE_BT
+import com.withjetpack.bluetooth_android_framework_iot.util.REQUEST_ENABLE_BT
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun MainScreen(navController: NavHostController) {
+
 
     Column(
         modifier = Modifier
@@ -58,7 +61,7 @@ fun MainScreen(navController: NavHostController) {
 
         Button(
             onClick = {
-                navController.navigate("detailScreen")
+                navController.navigate("DetailScreen")
             },
             modifier = Modifier
                 .height(80.dp)

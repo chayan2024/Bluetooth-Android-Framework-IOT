@@ -1,4 +1,4 @@
-package com.withjetpack.bluetooth_android_framework_iot.presentation.detail
+package com.withjetpack.bluetooth_android_framework_iot.presentation.detail.viewmodel
 
 import android.bluetooth.BluetoothDevice
 import androidx.lifecycle.ViewModel

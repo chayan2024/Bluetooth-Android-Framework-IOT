@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.withjetpack.bluetooth_android_framework_iot.presentation.detail.BluetoothViewModel
+import com.withjetpack.bluetooth_android_framework_iot.presentation.detail.viewmodel.BluetoothViewModel
 
 @SuppressLint("MissingPermission")
 @Composable
@@ -30,13 +30,12 @@ fun BluetoothAvailableDeviceCard(
     onClick: (BluetoothDevice) -> Unit
 ) {
 
-    val gradientColors = listOf(Color(0xFF009688), Color(0xFF004D40))
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp, 5.dp, 16.dp, 16.dp)
-            .background(if (isSelected) Color.Gray else Color.Transparent)
+            .background(if (isSelected) Color.White else Color.Transparent)
             .clickable {
                 viewModel.connectToDevice(device = bluetoothDevice)
             },
@@ -45,7 +44,7 @@ fun BluetoothAvailableDeviceCard(
     ) {
 
         Box(
-            modifier = Modifier
+            modifier = Modifier.background(Color(0xFFBB86FC))
                 .fillMaxSize()
                 .padding(5.dp)
         ) {
@@ -58,13 +57,7 @@ fun BluetoothAvailableDeviceCard(
                     .align(Alignment.TopStart)
                     .padding(bottom = 8.dp)
             )
-            Divider(
-                color = Color.White,
-                thickness = 1.dp,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(bottom = 8.dp)
-            )
+
             Text(
                 text = if (bluetoothDevice.address.isNullOrEmpty())"" else bluetoothDevice.address,
                 style = MaterialTheme.typography.body2,
