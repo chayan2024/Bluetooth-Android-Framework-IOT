@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        // Other repositories...
         jcenter()
         mavenCentral()
     }
